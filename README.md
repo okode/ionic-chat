@@ -68,4 +68,3 @@ $ curl -X POST -H "Content-Type:application/json" -d '{"text": "My new message"}
 ```
 $ curl http://localhost:8080/messages
 ```
-

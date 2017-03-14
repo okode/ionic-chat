@@ -3,6 +3,7 @@ import { StompService } from '../../services/stomp';
 import { ChatMessage } from '../../models/chatmessage';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { AlertController } from 'ionic-angular';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'page-home',
@@ -13,6 +14,10 @@ export class HomePage {
   private messages: ChatMessage[] = [];
 
   constructor(private stompService: StompService, private http: Http, private alertCtrl: AlertController) {
+    this.http
+      .get('http://localhost:8080/messages')
+      .mergeMap(res => Observable.from(<ChatMessage[]>res.json()))
+      .subscribe(message => this.messages.push(message));
     this.stompService
       .listen(StompService.MESSAGES_CHANNEL)
       .map(message => <ChatMessage>JSON.parse(message.body))

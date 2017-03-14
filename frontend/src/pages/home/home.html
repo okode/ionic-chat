@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+    <ion-buttons end>
+        <button ion-button (click)="newMessage()">New message</button>
+</ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+<ion-list>
+  <ion-item *ngFor="let message of messages">
+    <h2>{{message.text}}</h2>
+    <p>Timestamp: {{message.timestamp.epochSecond}}</p>
+  </ion-item>
+</ion-list>
+
+</ion-content>

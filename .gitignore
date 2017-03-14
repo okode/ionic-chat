@@ -1,0 +1,11 @@
+.DS_Store
+.gradle/
+build/
+bin/
+.classpath
+.project
+.settings/
+node_modules/
+platforms/
+plugins/
+www/

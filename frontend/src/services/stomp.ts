@@ -10,40 +10,47 @@ type PromiseResolve = (value?: void | PromiseLike<void>) => void;
 @Injectable()
 export class StompService {
 
-  public static readonly MESSAGES_CHANNEL = "/topic/messages";
-
   private stomp: Stomp.Client;
   private wsbaseuri = 'ws://localhost:8080';
+  private listeners = new Map<string, { listener: Observable<Stomp.Message>, subscriber: Subscriber<Stomp.Message> }>();
 
   constructor() {
     if (!isDevMode()) {
-      this.wsbaseuri = `${window.location.protocol.startsWith('http') ? 'ws' : 'wss'}://${window.location.host}`;
+      this.wsbaseuri = `${window.location.protocol.startsWith('https') ? 'wss' : 'ws'}://${window.location.host}`;
     }
     this.stomp = Stomp.client(`${this.wsbaseuri}/chat/websocket`);
+    this.connect();
   }
 
-  connect() {
+  private connect(resolve?: PromiseResolve) {
     this.stomp.connect({ login: '', passcode: '' },
       (frame?: Stomp.Frame) => {
-        console.log(`WS Connected: ${frame}`);
-        window.location.reload();
+        this.listeners.forEach((listener, topic) => {
+          this.stomp.subscribe(topic, message => { listener.subscriber.next(message); });
+        });
+        if (resolve != null) resolve();
       },
       (error: string) => {
-        console.log(`WS Error: ${error}`);
-        console.log('WS Reconnecting in 5 seconds...');
         setTimeout(() => {
-          console.log('WS Reconnecting now');
+          console.log('Stomp Reconnecting...');
           this.stomp = Stomp.client(`${this.wsbaseuri}/chat/websocket`);
-          this.connect();
+          this.connect(resolve);
         }, 5000);
       }
     );
   }
 
-  listen(topic: string, headers?: {}) {
-    return new Observable<StompMessage>((subscriber: Subscriber<StompMessage>) => {
-      this.stomp.subscribe(topic, message => { subscriber.next(message); }, headers);
+  ready() {
+    if (this.stomp.connected) return Promise.resolve();
+    return new Promise<void>(resolve => this.connect(resolve));
+  }
+
+  listen(topic: string) {
+    let listener = new Observable<StompMessage>((subscriber: Subscriber<StompMessage>) => {
+      this.listeners.set(topic, { listener: listener, subscriber: subscriber });
+      this.stomp.subscribe(topic, message => { subscriber.next(message); });
     });
+    return listener;
   }
 
 }

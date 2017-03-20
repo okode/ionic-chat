@@ -11,26 +11,20 @@ import { Observable } from 'rxjs/Observable';
 })
 export class HomePage {
 
+  public static readonly MESSAGES_CHANNEL = "/topic/messages";
+
   private messages: ChatMessage[] = [];
 
   constructor(private stompService: StompService, private http: Http, private alertCtrl: AlertController) {
-
-  }
-
-  connect() {
     this.http
       .get('http://localhost:8080/messages')
       .mergeMap(res => Observable.from(<ChatMessage[]>res.json()))
       .subscribe(message => this.messages.push(message));
-    this.stompService.connect();
-    this.listen();
-  }
-
-  listen() {
-    this.stompService
-      .listen(StompService.MESSAGES_CHANNEL)
+    this.stompService.ready().then(() => {
+      this.stompService.listen(HomePage.MESSAGES_CHANNEL)
       .map(message => <ChatMessage>JSON.parse(message.body))
       .subscribe(chatMessage => this.messages.push(chatMessage));
+    });
   }
 
   newMessage() {

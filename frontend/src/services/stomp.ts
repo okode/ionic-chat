@@ -22,11 +22,11 @@ export class StompService {
     this.stomp = Stomp.client(`${this.wsbaseuri}/chat/websocket`);
   }
 
-  connect(reconnectCallback?: () => void) {
+  connect() {
     this.stomp.connect({ login: '', passcode: '' },
       (frame?: Stomp.Frame) => {
         console.log(`WS Connected: ${frame}`);
-        if (reconnectCallback != null) reconnectCallback();
+        window.location.reload();
       },
       (error: string) => {
         console.log(`WS Error: ${error}`);
@@ -34,7 +34,7 @@ export class StompService {
         setTimeout(() => {
           console.log('WS Reconnecting now');
           this.stomp = Stomp.client(`${this.wsbaseuri}/chat/websocket`);
-          this.connect(reconnectCallback);
+          this.connect();
         }, 5000);
       }
     );

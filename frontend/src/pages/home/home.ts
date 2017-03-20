@@ -14,10 +14,21 @@ export class HomePage {
   private messages: ChatMessage[] = [];
 
   constructor(private stompService: StompService, private http: Http, private alertCtrl: AlertController) {
+
+  }
+
+  connect() {
     this.http
       .get('http://localhost:8080/messages')
       .mergeMap(res => Observable.from(<ChatMessage[]>res.json()))
       .subscribe(message => this.messages.push(message));
+    this.stompService.connect(() => {
+      this.listen();
+    });
+    this.listen();
+  }
+
+  listen() {
     this.stompService
       .listen(StompService.MESSAGES_CHANNEL)
       .map(message => <ChatMessage>JSON.parse(message.body))

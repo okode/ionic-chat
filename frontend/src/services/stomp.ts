@@ -13,46 +13,36 @@ export class StompService {
   public static readonly MESSAGES_CHANNEL = "/topic/messages";
 
   private stomp: Stomp.Client;
-
-  private readyPromiseResolve: PromiseResolve[] = [];
-  private connecting = false;
+  private wsbaseuri = 'ws://localhost:8080';
 
   constructor() {
-    let wsbaseuri = 'ws://localhost:8080';
     if (!isDevMode()) {
-      wsbaseuri = `${window.location.protocol.startsWith('http') ? 'ws' : 'wss'}://${window.location.host}`;
+      this.wsbaseuri = `${window.location.protocol.startsWith('http') ? 'ws' : 'wss'}://${window.location.host}`;
     }
-    this.stomp = Stomp.client(`${wsbaseuri}/chat/websocket`);
+    this.stomp = Stomp.client(`${this.wsbaseuri}/chat/websocket`);
   }
 
-  private ready() {
-    if(this.stomp.connected) return Promise.resolve();
-    if(!this.connecting) this.initStomp();
-    return new Promise<void>((resolve, reject) => {
-      this.readyPromiseResolve.push(resolve);
-    });
-  }
-
-  private initStomp() {
-    this.connecting = true
+  connect(reconnectCallback?: () => void) {
     this.stomp.connect({ login: '', passcode: '' },
       (frame?: Stomp.Frame) => {
-        console.log('WS Connected: ' + frame);
-        for (let promiseResolve of this.readyPromiseResolve) {
-          promiseResolve();
-        }
-        this.connecting = false;
-        this.readyPromiseResolve = [];
+        console.log(`WS Connected: ${frame}`);
+        if (reconnectCallback != null) reconnectCallback();
       },
       (error: string) => {
-        console.log('WS Error: ' + error);       
+        console.log(`WS Error: ${error}`);
+        console.log('WS Reconnecting in 5 seconds...');
+        setTimeout(() => {
+          console.log('WS Reconnecting now');
+          this.stomp = Stomp.client(`${this.wsbaseuri}/chat/websocket`);
+          this.connect(reconnectCallback);
+        }, 5000);
       }
     );
   }
 
   listen(topic: string, headers?: {}) {
     return new Observable<StompMessage>((subscriber: Subscriber<StompMessage>) => {
-      this.ready().then(() => { this.stomp.subscribe(topic, message => { subscriber.next(message); }, headers); });
+      this.stomp.subscribe(topic, message => { subscriber.next(message); }, headers);
     });
   }
 

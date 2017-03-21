@@ -20,11 +20,9 @@ export class HomePage {
       .get('http://localhost:8080/messages')
       .mergeMap(res => Observable.from(<ChatMessage[]>res.json()))
       .subscribe(message => this.messages.push(message));
-    this.stompService.ready().then(() => {
-      this.stompService.listen(HomePage.MESSAGES_CHANNEL)
+    this.stompService.listen(HomePage.MESSAGES_CHANNEL)
       .map(message => <ChatMessage>JSON.parse(message.body))
       .subscribe(chatMessage => this.messages.push(chatMessage));
-    });
   }
 
   newMessage() {

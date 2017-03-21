@@ -40,15 +40,17 @@ export class StompService {
     );
   }
 
-  ready() {
+  private ready() {
     if (this.stomp.connected) return Promise.resolve();
     return new Promise<void>(resolve => this.connect(resolve));
   }
 
   listen(topic: string) {
     let listener = new Observable<StompMessage>((subscriber: Subscriber<StompMessage>) => {
-      this.listeners.set(topic, { listener: listener, subscriber: subscriber });
-      this.stomp.subscribe(topic, message => { subscriber.next(message); });
+      this.ready().then(() => {
+        this.stomp.subscribe(topic, message => { subscriber.next(message);
+        this.listeners.set(topic, { listener: listener, subscriber: subscriber });
+      })});
     });
     return listener;
   }

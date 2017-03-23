@@ -4,6 +4,9 @@ import { ChatMessage } from '../../models/chatmessage';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { AlertController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/from';
 
 @Component({
   selector: 'page-home',

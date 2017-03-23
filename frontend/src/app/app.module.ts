@@ -5,6 +5,9 @@ import { AboutPage } from '../pages/about/about';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { StompService } from '../services/stomp';
+import { StatusBar } from '@ionic-native/status-bar';
+import { Device } from '@ionic-native/device';
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { StompService } from '../services/stomp';
     TabsPage
   ],
   providers: [
+    StatusBar,
+    Device,
+    SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     StompService
   ]

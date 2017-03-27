@@ -12,6 +12,7 @@
 <ion-list>
   <ion-item *ngFor="let message of messages">
     <h2>{{message.text}}</h2>
+    <p>UserId: {{message.userId}}</p>
     <p>Timestamp: {{message.timestamp.epochSecond}}</p>
   </ion-item>
 </ion-list>

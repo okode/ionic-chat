@@ -53,7 +53,7 @@ export class HomePage {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     this.http
-      .post('http://localhost:8080/messages', { text: text }, options)
+      .post('http://localhost:8080/messages', { text: text, userId: 1 }, options)
       .subscribe(null, error => console.log(JSON.stringify(error)));
   }
 

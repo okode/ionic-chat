@@ -23,7 +23,6 @@ export class StompService {
       this.wsbaseuri = `${window.location.protocol.startsWith('https') ? 'wss' : 'ws'}://${window.location.host}`;
     }
     this.stomp = Stomp.client(`${this.wsbaseuri}/chat/websocket`);
-    this.ready();
   }
 
   private connect() {
@@ -47,6 +46,13 @@ export class StompService {
     );
   }
 
+  private reconnect() {
+    setTimeout(() => {
+      this.stomp = Stomp.client(`${this.wsbaseuri}/chat/websocket`);
+      this.connect();
+    }, 1000);
+  }
+
   private ready() {
     if (this.stomp.connected) return Promise.resolve();
     if (!this.isReadyInProgress) {
@@ -54,7 +60,7 @@ export class StompService {
       this.readyPromise = new Promise<void>((resolve, reject) => {
         this.readyPromiseResolved = resolve;
       });
-      this.connect();
+      this.reconnect();
     }
     return this.readyPromise;
   }
@@ -67,6 +73,15 @@ export class StompService {
       });
     });
     return listener;
+  }
+
+  clearListeners() {
+    this.stomp.disconnect(() => {
+      this.listeners.clear();
+      this.isReadyInProgress = false;
+      this.readyPromise = null;
+      this.readyPromiseResolved = null;
+    });
   }
 
 }

@@ -18,7 +18,9 @@ export class HomePage {
 
   private messages: ChatMessage[] = [];
 
-  constructor(private stompService: StompService, private http: Http, private alertCtrl: AlertController) {
+  constructor(private stompService: StompService, private http: Http, private alertCtrl: AlertController) { }
+
+  ionViewDidEnter() {
     this.http
       .get('http://localhost:8080/messages')
       .mergeMap(res => Observable.from(<ChatMessage[]>res.json()))
@@ -26,6 +28,10 @@ export class HomePage {
     this.stompService.listen(HomePage.MESSAGES_CHANNEL)
       .map(message => <ChatMessage>JSON.parse(message.body))
       .subscribe(chatMessage => this.messages.push(chatMessage));
+  }
+
+  ionViewWillLeave() {
+    this.stompService.clearListeners();
   }
 
   newMessage() {

@@ -50,21 +50,21 @@
   dependencies:
     tsickle "^0.2"
 
-"@ionic-native/core@3.2.4":
-  version "3.2.4"
-  resolved "https://registry.yarnpkg.com/@ionic-native/core/-/core-3.2.4.tgz#deba86746f571b42f23025e234a07483105511e8"
+"@ionic-native/core@3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/core/-/core-3.3.0.tgz#9b47aa94cfad46aa7ab690cfc5e852048a0cc1ed"
 
-"@ionic-native/device@3.2.4":
-  version "3.2.4"
-  resolved "https://registry.yarnpkg.com/@ionic-native/device/-/device-3.2.4.tgz#ee5ba6a62910a0788ae84a2214f0c0f46fc741b6"
+"@ionic-native/device@3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/device/-/device-3.3.0.tgz#2f7a961388f6869924678e732ccf198151db400e"
 
-"@ionic-native/splash-screen@3.2.4":
-  version "3.2.4"
-  resolved "https://registry.yarnpkg.com/@ionic-native/splash-screen/-/splash-screen-3.2.4.tgz#a4791502b53e99a83e4001462fa10886e9c200c0"
+"@ionic-native/splash-screen@3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/splash-screen/-/splash-screen-3.3.0.tgz#0fae5c4d2195d9b183c9b947878dc3ff84f98b14"
 
-"@ionic-native/status-bar@3.2.4":
-  version "3.2.4"
-  resolved "https://registry.yarnpkg.com/@ionic-native/status-bar/-/status-bar-3.2.4.tgz#9d3c468bde56f94eafad9db6235849da787888b6"
+"@ionic-native/status-bar@3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/status-bar/-/status-bar-3.3.0.tgz#d65702efdb07281e384685c791ce84b94c82807e"
 
 "@ionic/app-scripts@1.1.4":
   version "1.1.4"
@@ -3089,9 +3089,9 @@ typedarray-to-buffer@^3.1.2:
   dependencies:
     is-typedarray "^1.0.0"
 
-typescript@2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.2.1.tgz#4862b662b988a4c8ff691cc7969622d24db76ae9"
+typescript@2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.2.2.tgz#606022508479b55ffa368b58fee963a03dfd7b0c"
 
 uglify-js@2.7.5, uglify-js@^2.7.5:
   version "2.7.5"

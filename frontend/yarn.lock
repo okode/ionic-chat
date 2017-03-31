@@ -50,25 +50,25 @@
   dependencies:
     tsickle "^0.2"
 
-"@ionic-native/core@3.4.3":
-  version "3.4.3"
-  resolved "https://registry.yarnpkg.com/@ionic-native/core/-/core-3.4.3.tgz#5ecc599b7d9955a46676564d723fe74845f38194"
+"@ionic-native/core@3.4.4":
+  version "3.4.4"
+  resolved "https://registry.yarnpkg.com/@ionic-native/core/-/core-3.4.4.tgz#6d8b69fd7e3723354c71cc43a53c48010025c025"
 
-"@ionic-native/device@3.4.3":
-  version "3.4.3"
-  resolved "https://registry.yarnpkg.com/@ionic-native/device/-/device-3.4.3.tgz#c335d4599d80729c6041417e047aaf4c31ee0e82"
+"@ionic-native/device@3.4.4":
+  version "3.4.4"
+  resolved "https://registry.yarnpkg.com/@ionic-native/device/-/device-3.4.4.tgz#1e519cf9769c65fe19f7f778451e4481fce1e60c"
 
-"@ionic-native/splash-screen@3.4.3":
-  version "3.4.3"
-  resolved "https://registry.yarnpkg.com/@ionic-native/splash-screen/-/splash-screen-3.4.3.tgz#a2d5ccfb53e0578d68d3a5873674f64bcdd328c2"
+"@ionic-native/splash-screen@3.4.4":
+  version "3.4.4"
+  resolved "https://registry.yarnpkg.com/@ionic-native/splash-screen/-/splash-screen-3.4.4.tgz#8c76adf0cf21a6ff425ddaa449b91b9aabd61cea"
 
-"@ionic-native/status-bar@3.4.3":
-  version "3.4.3"
-  resolved "https://registry.yarnpkg.com/@ionic-native/status-bar/-/status-bar-3.4.3.tgz#687b53623f5133c7eb0cf91d80cc653ae1bfe857"
+"@ionic-native/status-bar@3.4.4":
+  version "3.4.4"
+  resolved "https://registry.yarnpkg.com/@ionic-native/status-bar/-/status-bar-3.4.4.tgz#78eb4d4ee2d51e25ca94dbe9974047f588f57ec1"
 
-"@ionic/app-scripts@1.2.3":
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/@ionic/app-scripts/-/app-scripts-1.2.3.tgz#f3e8180479095c3d773106575e8f0bceb09ea549"
+"@ionic/app-scripts@1.2.5":
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/@ionic/app-scripts/-/app-scripts-1.2.5.tgz#a3144da40ae52f086ec8fe4a7a3b9e19798d12b5"
   dependencies:
     autoprefixer "6.7.2"
     babili "0.0.10"
@@ -264,10 +264,6 @@ async@^2.1.2:
   resolved "https://registry.yarnpkg.com/async/-/async-2.1.5.tgz#e587c68580994ac67fc56ff86d3ac56bdbe810bc"
   dependencies:
     lodash "^4.14.0"
-
-async@~0.2.6:
-  version "0.2.10"
-  resolved "https://registry.yarnpkg.com/async/-/async-0.2.10.tgz#b6bbe0b0674b9d719708ca38de8c237cb526c3d1"
 
 asynckit@^0.4.0:
   version "0.4.0"
@@ -3093,7 +3089,7 @@ typescript@2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.2.2.tgz#606022508479b55ffa368b58fee963a03dfd7b0c"
 
-uglify-js@2.8.16:
+uglify-js@2.8.16, uglify-js@^2.7.5:
   version "2.8.16"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.8.16.tgz#d286190b6eefc6fd65eb0ecac6551e0b0e8839a4"
   dependencies:
@@ -3101,15 +3097,6 @@ uglify-js@2.8.16:
     yargs "~3.10.0"
   optionalDependencies:
     uglify-to-browserify "~1.0.0"
-
-uglify-js@^2.7.5:
-  version "2.7.5"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.7.5.tgz#4612c0c7baaee2ba7c487de4904ae122079f2ca8"
-  dependencies:
-    async "~0.2.6"
-    source-map "~0.5.1"
-    uglify-to-browserify "~1.0.0"
-    yargs "~3.10.0"
 
 uglify-to-browserify@~1.0.0:
   version "1.0.2"

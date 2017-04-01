@@ -2,7 +2,7 @@
   "name": "ionic-chat",
   "description": "Ionic Chat",
   "author": "Okode",
-  "homepage": "https://github.com/pjorquera/ionic-chat",
+  "homepage": "https://github.com/okode/ionic-chat",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",

@@ -14,7 +14,7 @@ before_install:
 - npm install -g ionic cordova
 script:
 - cd frontend && yarn install && ionic platform add browser && ionic build browser && cd ..
-- cd backend && ./gradlew bootRepackage && cd ..
+- cd backend && ./gradlew bootJar && cd ..
 notifications:
   email:
     recipients:

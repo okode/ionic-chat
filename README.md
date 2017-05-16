@@ -6,7 +6,7 @@ Ionic Chat
 Ionic 2 Chat Demo based on:
 
 * Spring WebSockets backend
-* Ionic2 Frontend
+* Ionic Frontend
 
 Requirements
 ------------
@@ -23,7 +23,7 @@ $ brew update ; brew upgrade
 $ brew cask install java
 ```
 
-* Ionic2
+* Ionic
 
 ```
 $ brew install node yarn
@@ -46,8 +46,8 @@ $ ./gradlew bootRun
 ```
 $ cd frontend
 $ yarn install
-$ ionic platform add browser
-$ ionic build browser
+$ ionic cordova platform add browser
+$ ionic cordova build browser
 ```
 
 * Testing

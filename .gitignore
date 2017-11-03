@@ -10,3 +10,4 @@ platforms/
 plugins/
 www/
 yarn.lock
+.sourcemaps/

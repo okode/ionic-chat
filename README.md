@@ -1,8 +1,6 @@
 Ionic Chat
 ==========
 
-[![Build Status](https://travis-ci.org/okode/ionic-chat.svg?branch=master)](https://travis-ci.org/okode/ionic-chat)
-
 Ionic 2 Chat Demo based on:
 
 * Spring WebSockets backend

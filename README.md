@@ -36,7 +36,7 @@ $ ./gradlew bootRun
 * Testing
 
 ```
-$ ionic serve
+$ ionic serve -c -s
 ```
 
 Testing with curl

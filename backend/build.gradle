@@ -4,7 +4,7 @@ buildscript {
         maven { url 'https://repo.spring.io/milestone' }
     }
     dependencies {
-        classpath('org.springframework.boot:spring-boot-gradle-plugin:2.0.0.M1')
+        classpath('org.springframework.boot:spring-boot-gradle-plugin:2.0.0.M5')
     }
 }
 
@@ -18,9 +18,7 @@ repositories {
 }
 
 bootJar {
-    launchScript {
-        included = true
-    }
+    launchScript()
     excludeDevtools = true 
 }
 
@@ -34,4 +32,4 @@ dependencies {
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
-task wrapper(type: Wrapper) { gradleVersion = '3.5' }
+task wrapper(type: Wrapper) { gradleVersion = '4.3' }

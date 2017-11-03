@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { StompService } from '../../services/stomp';
 import { ChatMessage } from '../../models/chatmessage';
-import { Headers, RequestOptions } from '@angular/http';
+import { Headers, RequestOptions, Http } from '@angular/http';
 import { AlertController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/mergeMap';

@@ -23,14 +23,6 @@ $ brew update ; brew upgrade
 $ brew cask install java
 ```
 
-* Ionic
-
-```
-$ brew install node yarn
-$ npm update -g
-$ npm install -g ionic cordova ios-sim ios-deploy
-```
-
 Building and Running
 --------------------
 
@@ -39,15 +31,6 @@ Building and Running
 ```
 $ cd backend
 $ ./gradlew bootRun
-```
-
-* Frontend build & run
-
-```
-$ cd frontend
-$ yarn install
-$ ionic cordova platform add browser
-$ ionic cordova build browser
 ```
 
 * Testing
